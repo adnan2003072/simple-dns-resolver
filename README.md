@@ -7,9 +7,14 @@ It sends a DNS query and parses the server’s response, extracting useful infor
 
 Currently, my code only supports:
 - **A (Type 1)** : IPv4 address records
-- **CNAME (Type 5)** : – Canonical name (alias) records
+- **CNAME (Type 5)** : Canonical name (alias) records
 
 These are probably enough to resolve most common domain names into IP addresses.
+
+### Notes
+Note that the current program sends DNS queries directly to the local router (the DNS server provided by my ISP). This works for basic testing, but it is not flexible.
+
+An improvement would be to dynamically fetch DNS servers (e.g., from /etc/resolv.conf on Linux) or allow the user to specify a DNS server (such as 8.8.8.8 for Google DNS or 1.1.1.1 for Cloudflare).
 
 ### Usage
 Compile it:
@@ -28,6 +33,7 @@ Then run with a domain name:
 ```
 
 ### Improvements
+- Dynamically fetching DNS servers
 - Support for additional record types:
   - AAAA (IPv6)
   - MX (Mail Exchange)
